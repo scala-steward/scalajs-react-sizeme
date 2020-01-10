@@ -6,11 +6,10 @@ import scala.scalajs.js
 import js.annotation.JSImport
 import japgolly.scalajs.react.JsComponent
 import japgolly.scalajs.react.Children
-import react.common.syntax._
-// import react.common.Size
+import react.common._
 
 final case class SizeMe(
-  renderFn:        RenderFn,
+  renderFn:        RenderF,
   monitorWidth:    js.UndefOr[Boolean],
   monitorHeight:   js.UndefOr[Boolean],
   monitorPosition: js.UndefOr[Boolean],
@@ -51,7 +50,7 @@ object SizeMe {
              q.noPlaceholder)
 
   def rawprops(
-    children:        RenderFn,
+    children:        RenderF,
     monitorWidth:    js.UndefOr[Boolean] = js.undefined,
     monitorHeight:   js.UndefOr[Boolean] = js.undefined,
     monitorPosition: js.UndefOr[Boolean] = js.undefined,
@@ -79,7 +78,7 @@ object SizeMe {
     refreshRate:     js.UndefOr[Int] = js.undefined,
     refreshMode:     js.UndefOr[RefreshMode] = js.undefined,
     noPlaceholder:   js.UndefOr[Boolean] = js.undefined
-  )(render:          RenderFn): SizeMe =
+  )(render:          RenderF): SizeMe =
     new SizeMe(render,
                monitorWidth,
                monitorHeight,

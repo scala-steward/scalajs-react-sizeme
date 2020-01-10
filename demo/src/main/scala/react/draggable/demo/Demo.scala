@@ -1,7 +1,7 @@
 package react.sizeme.demo
 
 import scala.scalajs.js.annotation._
-import japgolly.scalajs.react.ReactFragment
+import japgolly.scalajs.react.React
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom
 import react.sizeme._
@@ -20,7 +20,7 @@ object Demo {
 
     println("demo")
     <.div(^.width := 100.pct, ^.height := 100.pct, SizeMe() { s =>
-      ReactFragment(<.div("Width:"), s"${s.width}")
+      React.Fragment(<.div("Width:"), s"${s.width}")
     }).renderIntoDOM(container)
 
     ()
