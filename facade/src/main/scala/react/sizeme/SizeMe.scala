@@ -6,6 +6,7 @@ import scala.scalajs.js
 import js.annotation.JSImport
 import japgolly.scalajs.react.JsComponent
 import japgolly.scalajs.react.Children
+import japgolly.scalajs.react.vdom.html_<^._
 import react.common._
 
 final case class SizeMe(
@@ -15,6 +16,7 @@ final case class SizeMe(
   monitorPosition: js.UndefOr[Boolean],
   refreshRate:     js.UndefOr[Int],
   refreshMode:     js.UndefOr[RefreshMode],
+  placeholder:     js.UndefOr[VdomNode],
   noPlaceholder:   js.UndefOr[Boolean]
 ) extends GenericComponentP[SizeMe.SizeMeProps] {
   override def cprops = SizeMe.props(this)
@@ -47,6 +49,7 @@ object SizeMe {
              q.monitorPosition,
              q.refreshRate,
              q.refreshMode,
+             q.placeholder,
              q.noPlaceholder)
 
   def rawprops(
@@ -56,10 +59,12 @@ object SizeMe {
     monitorPosition: js.UndefOr[Boolean] = js.undefined,
     refreshRate:     js.UndefOr[Int] = js.undefined,
     refreshMode:     js.UndefOr[RefreshMode] = js.undefined,
+    placeholder:     js.UndefOr[VdomNode] = js.undefined,
     noPlaceholder:   js.UndefOr[Boolean] = js.undefined
   ): SizeMeProps = {
     val p = (new js.Object).asInstanceOf[SizeMeProps]
-    p.children        = (s: SizeP) => children(s.size).rawNode
+    p.children = (s: SizeP) =>
+      if (!js.isUndefined(s) && !js.isUndefined(s.size.width)) children(s.size).rawNode else placeholder.rawNode
     p.monitorWidth    = monitorWidth
     p.monitorHeight   = monitorHeight
     p.monitorPosition = monitorPosition
@@ -77,6 +82,7 @@ object SizeMe {
     monitorPosition: js.UndefOr[Boolean] = js.undefined,
     refreshRate:     js.UndefOr[Int] = js.undefined,
     refreshMode:     js.UndefOr[RefreshMode] = js.undefined,
+    placeholder:     js.UndefOr[VdomNode] = js.undefined,
     noPlaceholder:   js.UndefOr[Boolean] = js.undefined
   )(render:          RenderF): SizeMe =
     new SizeMe(render,
@@ -85,5 +91,6 @@ object SizeMe {
                monitorPosition,
                refreshRate,
                refreshMode,
+               placeholder,
                noPlaceholder)
 }

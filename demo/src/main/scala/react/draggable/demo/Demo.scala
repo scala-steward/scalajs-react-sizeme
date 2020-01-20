@@ -1,13 +1,33 @@
 package react.sizeme.demo
 
 import scala.scalajs.js.annotation._
-import japgolly.scalajs.react.React
+import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom
 import react.sizeme._
 
+object HomeComponent {
+
+  val component =
+    ScalaComponent
+      .builder[Unit]("Home")
+      .render { _ =>
+        // <.div(
+        SizeMe() { s =>
+          println(s.width)
+          <.div(
+            s"Width: ${s.width}"
+          )
+        }
+        // )
+      }
+      .build
+
+  def apply() = component()
+}
 @JSExportTopLevel("Demo")
 object Demo {
+
   @JSExport
   def main(): Unit = {
     // needed to load the styles
@@ -18,10 +38,7 @@ object Demo {
       elem
     }
 
-    println("demo")
-    <.div(^.width := 100.pct, ^.height := 100.pct, SizeMe() { s =>
-      React.Fragment(<.div("Width:"), s"${s.width}")
-    }).renderIntoDOM(container)
+    HomeComponent().renderIntoDOM(container)
 
     ()
   }

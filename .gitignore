@@ -6,6 +6,7 @@ react-virtualized
 .metals/
 node_modules/
 package-lock.json
+project/metals.sbt
 .bloop/
 local.*
 node_modules/
