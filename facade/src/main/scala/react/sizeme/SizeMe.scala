@@ -64,7 +64,8 @@ object SizeMe {
   ): SizeMeProps = {
     val p = (new js.Object).asInstanceOf[SizeMeProps]
     p.children = (s: SizeP) =>
-      if (!js.isUndefined(s) && !js.isUndefined(s.size.width)) children(s.size).rawNode else placeholder.rawNode
+      if (!js.isUndefined(s) && !js.isUndefined(s.size.width)) children(s.size).rawNode
+      else placeholder.rawNode
     p.monitorWidth    = monitorWidth
     p.monitorHeight   = monitorHeight
     p.monitorPosition = monitorPosition
