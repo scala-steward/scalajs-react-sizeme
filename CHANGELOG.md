@@ -1,5 +1,9 @@
 # Changes
 
+## 0.2.0
+
+* Update scalajs-react to 1.6.0
+
 ## 0.1.2
 
 * Updated react-sizeme library
