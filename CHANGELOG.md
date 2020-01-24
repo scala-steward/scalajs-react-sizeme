@@ -1,5 +1,9 @@
 # Changes
 
+## 0.2.1
+
+* Update scalajs-common and scalajs
+
 ## 0.2.0
 
 * Update scalajs-react to 1.6.0
