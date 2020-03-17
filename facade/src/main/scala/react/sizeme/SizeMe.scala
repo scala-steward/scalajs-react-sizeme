@@ -10,17 +10,19 @@ import japgolly.scalajs.react.vdom.html_<^._
 import react.common._
 
 final case class SizeMe(
-  renderFn:        RenderF,
-  monitorWidth:    js.UndefOr[Boolean],
-  monitorHeight:   js.UndefOr[Boolean],
-  monitorPosition: js.UndefOr[Boolean],
-  refreshRate:     js.UndefOr[Int],
-  refreshMode:     js.UndefOr[RefreshMode],
-  placeholder:     js.UndefOr[VdomNode],
-  noPlaceholder:   js.UndefOr[Boolean]
-) extends GenericComponentP[SizeMe.SizeMeProps] {
-  override def cprops = SizeMe.props(this)
-  @inline def render  = SizeMe.component(SizeMe.props(this))
+  renderFn:               RenderF,
+  monitorWidth:           js.UndefOr[Boolean],
+  monitorHeight:          js.UndefOr[Boolean],
+  monitorPosition:        js.UndefOr[Boolean],
+  refreshRate:            js.UndefOr[Int],
+  refreshMode:            js.UndefOr[RefreshMode],
+  placeholder:            js.UndefOr[VdomNode],
+  noPlaceholder:          js.UndefOr[Boolean],
+  override val modifiers: Seq[TagMod]
+) extends GenericComponentPA[SizeMe.SizeMeProps, SizeMe] {
+  override def cprops              = SizeMe.props(this)
+  override protected val component = SizeMe.component
+  override def addModifiers(modifiers: Seq[TagMod]) = copy(modifiers = this.modifiers ++ modifiers)
 }
 
 object SizeMe {
@@ -84,7 +86,8 @@ object SizeMe {
     refreshRate:     js.UndefOr[Int] = js.undefined,
     refreshMode:     js.UndefOr[RefreshMode] = js.undefined,
     placeholder:     js.UndefOr[VdomNode] = js.undefined,
-    noPlaceholder:   js.UndefOr[Boolean] = js.undefined
+    noPlaceholder:   js.UndefOr[Boolean] = js.undefined,
+    modifiers:       Seq[TagMod] = Seq.empty
   )(render:          RenderF): SizeMe =
     new SizeMe(render,
                monitorWidth,
@@ -93,5 +96,6 @@ object SizeMe {
                refreshRate,
                refreshMode,
                placeholder,
-               noPlaceholder)
+               noPlaceholder,
+               modifiers)
 }
