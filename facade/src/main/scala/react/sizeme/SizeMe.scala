@@ -26,7 +26,7 @@ final case class SizeMe(
   override def addModifiers(modifiers: Seq[TagMod]) = copy(modifiers = this.modifiers ++ modifiers)
 }
 
-object SizeMe                                              {
+object SizeMe {
 
   @js.native
   @JSImport("react-sizeme", "SizeMe")
@@ -54,8 +54,7 @@ object SizeMe                                              {
              q.refreshMode,
              q.placeholder,
              q.noPlaceholder,
-             q.renderOnUndefined
-    )
+             q.renderOnUndefined)
 
   def rawprops(
     children:          RenderF,
@@ -77,12 +76,12 @@ object SizeMe                                              {
         children(s.size).rawNode
       else placeholder.rawNode
     }
-    monitorWidth.foreach(v => p.monitorWidth = v)
-    monitorHeight.foreach(v => p.monitorHeight = v)
+    monitorWidth.foreach(v => p.monitorWidth       = v)
+    monitorHeight.foreach(v => p.monitorHeight     = v)
     monitorPosition.foreach(v => p.monitorPosition = v)
-    refreshRate.foreach(v => p.refreshRate = v)
-    refreshMode.toJs.foreach(v => p.refreshMode = v)
-    noPlaceholder.foreach(v => p.noPlaceholder = v)
+    refreshRate.foreach(v => p.refreshRate         = v)
+    refreshMode.toJs.foreach(v => p.refreshMode    = v)
+    noPlaceholder.foreach(v => p.noPlaceholder     = v)
     p
   }
 
@@ -108,6 +107,5 @@ object SizeMe                                              {
                placeholder,
                noPlaceholder,
                renderOnUndefined,
-               modifiers
-    )
+               modifiers)
 }
