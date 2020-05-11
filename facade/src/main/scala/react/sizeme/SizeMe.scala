@@ -26,7 +26,7 @@ final case class SizeMe(
   override def addModifiers(modifiers: Seq[TagMod]) = copy(modifiers = this.modifiers ++ modifiers)
 }
 
-object SizeMe                                              {
+object SizeMe {
 
   @js.native
   @JSImport("react-sizeme", "SizeMe")
@@ -70,9 +70,6 @@ object SizeMe                                              {
   ): SizeMeProps = {
     val p = (new js.Object).asInstanceOf[SizeMeProps]
     p.children = (s: SizeP) => {
-      println(s)
-      println("-----")
-      println(s.size)
       if (renderOnUndefined || (!js.isUndefined(s) && !js.isUndefined(s.size.width)))
         children(s.size).rawNode
       else placeholder.rawNode
