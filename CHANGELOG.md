@@ -1,5 +1,10 @@
 # Changes
 
+## 0.4.0
+
+* Upgrade to scala.js 1.0
+* Upgrade to scalajs-react 1.7.0
+
 ## 0.3.4
 
 * Add property to optionally render if size is undefined

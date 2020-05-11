@@ -1,5 +1,5 @@
-val reactJS      = "16.7.0"
-val scalaJsReact = "1.6.0"
+val reactJS      = "16.13.1"
+val scalaJsReact = "1.7.0"
 val reactSizeMe  = "2.6.12"
 
 parallelExecution in (ThisBuild, Test) := false
@@ -73,7 +73,6 @@ lazy val demo =
       webpackBundlingMode in fastOptJS := BundlingMode.LibraryOnly(),
       webpackBundlingMode in fullOptJS := BundlingMode.Application,
       test := {},
-      emitSourceMaps := false,
       // NPM libs for development, mostly to let webpack do its magic
       npmDevDependencies in Compile ++= Seq(
         "postcss-loader" -> "3.0.0",
@@ -116,7 +115,6 @@ lazy val facade =
       name := "react-sizeme",
       version in webpack := "4.32.0",
       version in startWebpackDevServer := "3.3.1",
-      version in installJsdom := "15.2.1",
       // Requires the DOM for tests
       requireJsDomEnv in Test := true,
       // Compile tests to JS using fast-optimisation
@@ -129,7 +127,7 @@ lazy val facade =
       libraryDependencies ++= Seq(
         "com.github.japgolly.scalajs-react" %%% "core" % scalaJsReact,
         "com.github.japgolly.scalajs-react" %%% "test" % scalaJsReact % Test,
-        "io.github.cquiroz.react" %%% "common" % "0.7.1",
+        "io.github.cquiroz.react" %%% "common" % "0.8.1",
         "com.lihaoyi" %%% "utest" % "0.7.4" % Test
       ),
       webpackConfigFile in Test := Some(baseDirectory.value / "webpack" / "test.webpack.config.js"),
@@ -137,7 +135,7 @@ lazy val facade =
     )
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.13.1",
+  scalaVersion := "2.13.2",
   organization := "io.github.cquiroz.react",
   sonatypeProfileName := "io.github.cquiroz",
   description := "scala.js facade for react-sizeme",
@@ -146,6 +144,5 @@ lazy val commonSettings = Seq(
     // By necessity facades will have unused params
     "-Wdead-code",
     "-Wunused:params"
-  ))),
-  scalacOptions += "-P:scalajs:sjsDefinedByDefault"
+  )))
 )
