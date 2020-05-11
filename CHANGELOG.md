@@ -1,5 +1,9 @@
 # Changes
 
+## 0.3.4
+
+* Add property to optionally render if size is undefined
+
 ## 0.3.2
 
 * Update scalajs-common
