@@ -1,5 +1,9 @@
 # Changes
 
+## 0.4.8
+
+* Upgrade to react-common 0.9.8
+
 ## 0.4.7
 
 * Upgrade to react-common 0.9.7
