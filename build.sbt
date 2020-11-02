@@ -1,5 +1,5 @@
 val reactJS      = "16.13.1"
-val scalaJsReact = "1.7.5"
+val scalaJsReact = "1.7.6"
 val reactSizeMe  = "2.6.12"
 
 parallelExecution in (ThisBuild, Test) := false
