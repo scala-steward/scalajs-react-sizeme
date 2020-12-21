@@ -29,8 +29,10 @@ final case class SizeMe(
 object SizeMe {
 
   @js.native
-  @JSImport("react-sizeme", "SizeMe")
-  object RawComponent extends js.Object
+  @JSImport("react-sizeme", JSImport.Default)
+  object RawComponent extends js.Object {
+    val SizeMe: js.Object = js.native
+  }
 
   @js.native
   trait SizeMeProps extends js.Object {
@@ -83,7 +85,7 @@ object SizeMe {
     p
   }
 
-  val component = JsComponent[SizeMeProps, Children.None, Null](RawComponent)
+  val component = JsComponent[SizeMeProps, Children.None, Null](RawComponent.SizeMe)
 
   def apply(
     monitorWidth:      js.UndefOr[Boolean] = js.undefined,
