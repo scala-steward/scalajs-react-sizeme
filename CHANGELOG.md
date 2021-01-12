@@ -1,6 +1,6 @@
 # Changes
 
-## 0.6.3
+## 0.6.4
 
 * Update scala.js to 1.4.0
 
